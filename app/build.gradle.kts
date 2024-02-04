@@ -53,6 +53,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("io.coil-kt:coil:2.0.0-rc02")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
