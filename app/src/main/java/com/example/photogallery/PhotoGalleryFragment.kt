@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
@@ -71,6 +72,16 @@ class PhotoGalleryFragment : Fragment() {
                 return false
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.menu_item_clear -> {
+                photoGalleryViewModel.setQuery("")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
 
