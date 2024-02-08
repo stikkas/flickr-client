@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 private const val TAG = "PhotoGalleryFragment"
 
 class PhotoGalleryFragment : Fragment() {
+    private var searchView: SearchView? = null
     private var _binding: FragmentPhotoGalleryBinding? = null
     private val binding
         get() = checkNotNull(_binding) {
@@ -47,8 +48,9 @@ class PhotoGalleryFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                photoGalleryViewModel.galleryItems.collect { items ->
-                    binding.photoGrid.adapter = PhotoListAdapter(items)
+                photoGalleryViewModel.uiState.collect { state ->
+                    binding.photoGrid.adapter = PhotoListAdapter(state.images)
+                    searchView?.setQuery(state.query, false)
                 }
             }
         }
@@ -59,7 +61,7 @@ class PhotoGalleryFragment : Fragment() {
         inflater.inflate(R.menu.fragment_photo_gallery, menu)
 
         val searchItem = menu.findItem(R.id.menu_item_search)
-        val searchView = searchItem.actionView as? SearchView
+        searchView = searchItem.actionView as? SearchView
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Log.d(TAG, "QueryTextSubmit: $query")
@@ -72,6 +74,11 @@ class PhotoGalleryFragment : Fragment() {
                 return false
             }
         })
+    }
+
+    override fun onDestroyOptionsMenu() {
+        super.onDestroyOptionsMenu()
+        searchView = null
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
