@@ -52,7 +52,7 @@ class PhotoGalleryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPhotoGalleryBinding.inflate(inflater, container, false)
-        binding.photoGrid.layoutManager = GridLayoutManager(context, 3)
+        binding.photoGrid.layoutManager = GridLayoutManager(context, 1)
         return binding.root
     }
 
