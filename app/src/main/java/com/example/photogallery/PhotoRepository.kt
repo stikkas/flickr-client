@@ -2,7 +2,7 @@ package com.example.photogallery
 
 import com.example.photogallery.api.FlickrApi
 import com.example.photogallery.api.PhotoInterceptor
-import com.example.photogallery.model.GallaryItem
+import com.example.photogallery.model.GalleryItem
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -23,11 +23,11 @@ class PhotoRepository {
         api = retrofit.create<FlickrApi>()
     }
 
-    suspend fun fetchPhotos(): List<GallaryItem> {
+    suspend fun fetchPhotos(): List<GalleryItem> {
         return api.fetchPhotos().photos.galleryItems
     }
 
-    suspend fun searchPhotos(query: String): List<GallaryItem> {
+    suspend fun searchPhotos(query: String): List<GalleryItem> {
         return api.searchPhotos(query).photos.galleryItems
     }
 }

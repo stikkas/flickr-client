@@ -3,7 +3,7 @@ package com.example.photogallery
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.photogallery.model.GallaryItem
+import com.example.photogallery.model.GalleryItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -48,7 +48,7 @@ class PhotoGalleryViewModel : ViewModel() {
         }
     }
 
-    private suspend fun fetchGalleryItems(query: String): List<GallaryItem> {
+    private suspend fun fetchGalleryItems(query: String): List<GalleryItem> {
         return if (query.isNotEmpty()) {
             photoRepository.searchPhotos(query)
         } else {
@@ -58,6 +58,6 @@ class PhotoGalleryViewModel : ViewModel() {
 }
 
 data class PhotoGalleryUiState(
-    val images: List<GallaryItem> = listOf(),
+    val images: List<GalleryItem> = listOf(),
     val query: String = ""
 )
