@@ -55,6 +55,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("io.coil-kt:coil:2.0.0-rc02")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.13.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
